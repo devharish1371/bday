@@ -22,6 +22,13 @@ GitHub stores the source; pushing changes there does not automatically update th
 
 The present-first choice removes the gift button and reveals the cheeky detour. The timeline supports direct chapter selection, back/next buttons, left/right keyboard arrows, and horizontal swipes. Future scenes lead to confetti and the voice-note dialog. Escape closes the dialog; closing pauses audio. Restart and replay are available. OS reduced-motion preference disables the animated reveals and confetti.
 
+## New little surprises
+
+- Hidden notes behind every photo, collected in a “pocketful of love” on the finale. Edit each chapter’s `secret.txt`.
+- A wax-sealed letter before the future scenes. Edit `dist/personalize/09-future-letter/letter.txt`.
+- An animated wish candle before the birthday explosion; tap it or use the wish button. No microphone needed.
+- Notes are collected for the current page visit; refreshing resets the collection.
+
 ## Design research
 
 - Storybook pacing: https://www.awwwards.com/sites/my-little-storybook
