@@ -6,17 +6,17 @@ A responsive birthday story built with HTML, CSS and JavaScript. No build depend
 
 Run `python3 -m http.server 4173` in this directory and open http://localhost:4173/dist/.
 
-## Personalize
+## Personalize — start here
 
-Edit `dist/content.js`:
-- Five `chapters`: baby, toddler, teen, adulthood, and now.
-- Two `future` scenes: CMA success and your happy married life.
-- Put photographs in `dist/assets/` and set each `image` to `assets/filename.jpg`.
-- Replace each `message`, `title`, `caption`, `note`, and `alt` with your personal words.
-- Put your recorded voice note in `dist/assets/`, set `voiceNote` to its path, and add `voiceTranscript`.
-- The voice note opens with native playback controls; recording is supplied separately.
+Open [dist/personalize/README.md](dist/personalize/README.md) for the folder map.
 
-Images are intentionally illustrated placeholders. All current chapter messages are sample copy. No personal media is uploaded yet. Use portrait or square photos; the cards crop centrally.
+Each numbered folder has its own `message.txt`. Replace the sample words and drop a `photo.jpg` into that same folder. The site loads both automatically. Put your recording into `dist/personalize/08-voice-note/voice-note.mp3`, with an optional `transcript.txt`.
+
+For headings, captions, handwritten notes, or different media filenames, edit the matching section in [dist/content.js](dist/content.js). Missing photos and audio keep their placeholders. Refresh the page after saving files; use the HTTP preview above rather than opening index.html directly.
+
+The seven photo slots are baby, toddler, teen, adulthood, now, CMA success, and married life. All current messages are sample copy. No personal media is included yet.
+
+GitHub stores the source; pushing changes there does not automatically update the separate Sites preview. Publish a new version after personalizing.
 
 ## Interaction
 

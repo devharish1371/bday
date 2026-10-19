@@ -40,3 +40,12 @@ function restart(){document.querySelector('#confetti').replaceChildren();home();
 document.querySelector('#restart').addEventListener('click',restart);document.querySelector('.brand').addEventListener('click',e=>{e.preventDefault();restart()});
 const dialog=document.querySelector('#gift-dialog');document.querySelector('#close-gift').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});dialog.addEventListener('close',()=>dialog.querySelector('audio')?.pause());
 home();
+
+// Refresh an already-open chapter if optional files finish loading after the first click.
+window.birthdayContentReady.then(() => {
+  if (screen === 'story' || screen === 'future') story(screen === 'future', index);
+  if (document.querySelector('#gift-dialog').open) {
+    document.querySelector('#gift-dialog').close();
+    gift();
+  }
+});
