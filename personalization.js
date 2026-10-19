@@ -19,6 +19,12 @@ window.birthdayContentReady = (async () => {
   const voicePath = data.voiceNote;
   data.voiceNote = null;
   await Promise.all([
+    (async () => {
+      if (data.letterFile) {
+        const letter = await textFile(data.letterFile);
+        if (letter) data.letter = letter;
+      }
+    })(),
     ...[...data.chapters, ...data.future].map(async chapter => {
       const photoPath = chapter.image;
       chapter.image = null;
@@ -30,6 +36,10 @@ window.birthdayContentReady = (async () => {
           if (!chapter.messageFile) return;
           const message = await textFile(chapter.messageFile);
           if (message) chapter.message = message;
+          if (chapter.secretFile) {
+            const secret = await textFile(chapter.secretFile);
+            if (secret) chapter.secret = secret;
+          }
         })()
       ]);
     }),

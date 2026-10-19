@@ -1,8 +1,6 @@
 // PERSONALIZATION SETTINGS
-// Photos and messages: see the numbered folders in dist/personalize/.
-// Each chapter below is a separate editable section: title, caption, alt, note.
-// message is fallback copy; the corresponding message.txt takes priority.
-// Keep real image/audio extensions when changing paths.
+// Photos, messages and secret notes: see the numbered folders in dist/personalize/.
+// Text files take priority over the fallback copy below.
 window.BIRTHDAY = {
   "voiceNote": "personalize/08-voice-note/voice-note.mp3",
   "voiceTranscript": "",
@@ -18,7 +16,9 @@ window.BIRTHDAY = {
       "kind": "baby",
       "note": "small human, enormous cuteness",
       "color": "#e9e9d9",
-      "messageFile": "personalize/01-baby/message.txt"
+      "messageFile": "personalize/01-baby/message.txt",
+      "secret": "If I had known you back then, I would absolutely have shared my favourite toy with you. Probably.",
+      "secretFile": "personalize/01-baby/secret.txt"
     },
     {
       "label": "Tiny explorer",
@@ -31,7 +31,9 @@ window.BIRTHDAY = {
       "kind": "toddler",
       "note": "probably plotting something",
       "color": "#eadccc",
-      "messageFile": "personalize/02-toddler/message.txt"
+      "messageFile": "personalize/02-toddler/message.txt",
+      "secret": "I bet you were a tiny menace. Cute enough to get away with absolutely everything.",
+      "secretFile": "personalize/02-toddler/secret.txt"
     },
     {
       "label": "Teenage you",
@@ -44,7 +46,9 @@ window.BIRTHDAY = {
       "kind": "teen",
       "note": "main character since day one",
       "color": "#e5dfeb",
-      "messageFile": "personalize/03-teen/message.txt"
+      "messageFile": "personalize/03-teen/message.txt",
+      "secret": "Somewhere in this chapter, my favourite person was becoming herself. I love that thought.",
+      "secretFile": "personalize/03-teen/secret.txt"
     },
     {
       "label": "Finding yourself",
@@ -57,7 +61,9 @@ window.BIRTHDAY = {
       "kind": "adult",
       "note": "quietly doing amazing things",
       "color": "#dae4dc",
-      "messageFile": "personalize/04-adulthood/message.txt"
+      "messageFile": "personalize/04-adulthood/message.txt",
+      "secret": "You don’t have to earn a soft place to land. You have one with me.",
+      "secretFile": "personalize/04-adulthood/secret.txt"
     },
     {
       "label": "You, now",
@@ -70,7 +76,9 @@ window.BIRTHDAY = {
       "kind": "now",
       "note": "how did I get this lucky?",
       "color": "#edd9d4",
-      "messageFile": "personalize/05-now/message.txt"
+      "messageFile": "personalize/05-now/message.txt",
+      "secret": "My favourite notification is still your name on my screen. Yes, even when you’re just saying “oi”.",
+      "secretFile": "personalize/05-now/secret.txt"
     }
   ],
   "future": [
@@ -85,7 +93,9 @@ window.BIRTHDAY = {
       "kind": "cma",
       "note": "your loudest cheerleader: me",
       "color": "#e3e5cd",
-      "messageFile": "personalize/06-cma/message.txt"
+      "messageFile": "personalize/06-cma/message.txt",
+      "secret": "Future CMA. Current favourite human. Both titles look very good on you.",
+      "secretFile": "personalize/06-cma/secret.txt"
     },
     {
       "label": "Our forever",
@@ -98,8 +108,12 @@ window.BIRTHDAY = {
       "kind": "forever",
       "note": "same team, every lifetime",
       "color": "#e9d9cf",
-      "messageFile": "personalize/07-married-life/message.txt"
+      "messageFile": "personalize/07-married-life/message.txt",
+      "secret": "My very ambitious life plan: more ordinary Tuesdays with you.",
+      "secretFile": "personalize/07-married-life/secret.txt"
     }
   ],
-  "voiceTranscriptFile": "personalize/08-voice-note/transcript.txt"
+  "voiceTranscriptFile": "personalize/08-voice-note/transcript.txt",
+  "letter": "I can’t tell you exactly what our future looks like.\n\nBut when I imagine your big days, I want to be there cheering. And when I imagine the quiet days, I want to be there too.\n\nSo here are two little dreams I’m keeping close to my heart. One for you. One for us.\n\nAlways on your team,\nyour favourite human ♡",
+  "letterFile": "personalize/09-future-letter/letter.txt"
 };
