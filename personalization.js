@@ -20,6 +20,19 @@ window.birthdayContentReady = (async () => {
   data.voiceNote = null;
   await Promise.all([
     (async () => {
+      try {
+        const raw = await textFile(data.quizFile);
+        const quiz = JSON.parse(raw);
+        if (Array.isArray(quiz) && quiz.length && quiz.every(q => typeof q.question === 'string' && Array.isArray(q.answers) && q.answers.length >= 2 && q.answers.every(a => typeof a.label === 'string' && typeof a.reply === 'string'))) data.quiz = quiz;
+      } catch { /* Invalid custom JSON keeps the working default quiz. */ }
+    })(),
+    (async () => {
+      try {
+        const coupon = JSON.parse(await textFile(data.couponFile));
+        if (coupon && ['title','message','footer'].every(key => typeof coupon[key] === 'string')) data.coupon = coupon;
+      } catch { /* Keep the default invitation when its JSON is absent or invalid. */ }
+    })(),
+    (async () => {
       if (data.letterFile) {
         const letter = await textFile(data.letterFile);
         if (letter) data.letter = letter;

@@ -28,3 +28,9 @@ For a PNG/WebP photo or M4A recording, keep the real extension and update the co
 These folders are part of the website. Only add media you intend to include in the published birthday experience.
 
 Secret-note discoveries last for the current page visit. Reloading starts a fresh collection. The wish candle uses a tap or keyboard activation; it does not request microphone access.
+
+## Quiz and scratch-card gift
+
+Edit `10-little-surprises/quiz.json` for the optional quiz and `10-little-surprises/coupon.json` for the date invitation. Every quiz choice has its own reply. All current questions and gift wording are samples—swap in your inside jokes and a date you want to give her.
+
+The finale lets her download your future letter as a birthday PNG. The scratch-card page has a separate PNG save button for its invitation.
