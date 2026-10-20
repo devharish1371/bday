@@ -46,3 +46,7 @@ Personalize the quiz and invitation in `dist/personalize/10-little-surprises/`. 
 - User-initiated audio: https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Autoplay
 
 The site uses Google Fonts with serif/sans-serif/cursive fallbacks. No analytics or tracking code. The Sites preview is owner-private by default; sharing must be configured before sending it to someone else.
+
+## Final polish
+
+Real photos gently develop into full color once per image during a page visit. The candle dims before the birthday greeting, with confetti following after she has a moment to read it. The voice note has a quiet playback indicator, replay, and a final line from `dist/personalize/08-voice-note/ending.txt` revealed only when playback ends. Reduced-motion preferences skip the effects. Personal recording and photos still need to be supplied.

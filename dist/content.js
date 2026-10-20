@@ -174,5 +174,7 @@ window.BIRTHDAY = {
     "message": "You choose the movie. I’ll bring the snacks, the cuddles, and my very best company.",
     "footer": "Two seats. One favourite person. ♡"
   },
-  "couponFile": "personalize/10-little-surprises/coupon.json"
+  "couponFile": "personalize/10-little-surprises/coupon.json",
+  "voiceEnding": "When this little website ends, the loving-you part doesn’t. ♡",
+  "voiceEndingFile": "personalize/08-voice-note/ending.txt"
 };
