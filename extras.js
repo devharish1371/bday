@@ -47,7 +47,7 @@ function blowCandle() {
   app.querySelector('.wish-scene').classList.add('wished');
   app.querySelector('.wish-instruction').textContent = 'May this be your sweetest year yet. ♡';
   app.querySelectorAll('[data-action="wish"]').forEach(button=>button.disabled = true);
-  wishTimer = setTimeout(() => { if (screen === 'wish') { celebrate(); focusHeading(); } }, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1500);
+  wishTimer = setTimeout(() => { if (screen === 'wish') { celebrate(); focusHeading(); } }, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1900);
 }
 function handleExtra(action) {
   switch(action) {

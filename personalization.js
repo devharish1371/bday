@@ -20,6 +20,12 @@ window.birthdayContentReady = (async () => {
   data.voiceNote = null;
   await Promise.all([
     (async () => {
+      if (data.voiceEndingFile) {
+        const ending = await textFile(data.voiceEndingFile);
+        if (ending) data.voiceEnding = ending;
+      }
+    })(),
+    (async () => {
       try {
         const raw = await textFile(data.quizFile);
         const quiz = JSON.parse(raw);
