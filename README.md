@@ -50,3 +50,18 @@ The site uses Google Fonts with serif/sans-serif/cursive fallbacks. No analytics
 ## Final polish
 
 Real photos gently develop into full color once per image during a page visit. The candle dims before the birthday greeting, with confetti following after she has a moment to read it. The voice note has a quiet playback indicator, replay, and a final line from `dist/personalize/08-voice-note/ending.txt` revealed only when playback ends. Reduced-motion preferences skip the effects. The personal recording and photos are connected.
+
+## GitHub Pages
+
+The public site is published from the root of the `gh-pages` branch. That branch contains only `dist/`. `.nojekyll` serves the files as a plain static site.
+
+After committing future changes on `main`, publish the updated site with:
+
+```sh
+git push origin main
+git subtree split --prefix dist
+# Copy the commit SHA printed above:
+git push origin <printed-commit-sha>:gh-pages
+```
+
+GitHub Pages builds automatically after a push to `gh-pages`. The separate private Sites preview has its own deployment process.
