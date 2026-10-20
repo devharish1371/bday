@@ -1,4 +1,4 @@
-// Load optional drop-in files. Missing media leaves the illustrated placeholders intact.
+// Load personal media and text. Keep configured paths available while checking files.
 window.birthdayContentReady = (async () => {
   const data = window.BIRTHDAY;
   async function textFile(path) {
@@ -17,7 +17,6 @@ window.birthdayContentReady = (async () => {
     });
   }
   const voicePath = data.voiceNote;
-  data.voiceNote = null;
   await Promise.all([
     (async () => {
       if (data.voiceEndingFile) {
@@ -46,10 +45,9 @@ window.birthdayContentReady = (async () => {
     })(),
     ...[...data.chapters, ...data.future].map(async chapter => {
       const photoPath = chapter.image;
-      chapter.image = null;
       await Promise.all([
         (async () => {
-          if (photoPath && await photoExists(photoPath)) chapter.image = photoPath;
+          if (photoPath && !await photoExists(photoPath)) chapter.image = null;
         })(),
         (async () => {
           if (!chapter.messageFile) return;
@@ -69,7 +67,7 @@ window.birthdayContentReady = (async () => {
         if (response.ok && !response.headers.get('content-type')?.includes('text/html')) {
           data.voiceNote = voicePath;
         }
-      } catch { /* Keep the gift placeholder when the recording is unavailable. */ }
+      } catch { /* The audio player reports a loading error if the network is unavailable. */ }
     })(),
     (async () => {
       if (!data.voiceTranscriptFile) return;

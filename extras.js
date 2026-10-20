@@ -6,7 +6,7 @@ const allChapters = () => [...data.chapters, ...data.future];
 function noteKey() { return screen === 'future' ? data.chapters.length + index : index; }
 function secretButton() {
   const key = noteKey();
-  return `<button class="secret-tab ${foundNotes.has(key) ? 'found' : ''}" data-action="secret" aria-label="Read the secret note tucked behind this photo"><span aria-hidden="true">♡</span> ${foundNotes.has(key) ? 'your little secret' : 'psst… turn me over'}</button>`;
+  return `<button class="secret-tab ${foundNotes.has(key) ? 'found' : ''}" data-action="secret" aria-label="Read the secret note tucked behind this photo"><span aria-hidden="true">♡</span> ${foundNotes.has(key) ? 'your little secret' : 'a note for you'}</button>`;
 }
 function readSecret() {
   const key = noteKey(), chapter = allChapters()[key];
