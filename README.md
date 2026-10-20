@@ -10,11 +10,11 @@ Run `python3 -m http.server 4173` in this directory and open http://localhost:41
 
 Open [dist/personalize/README.md](dist/personalize/README.md) for the folder map.
 
-Each numbered folder has its own `message.txt`. Replace the sample words and drop a `photo.jpg` into that same folder. The site loads both automatically. Put your recording into `dist/personalize/08-voice-note/voice-note.mp3`, with an optional `transcript.txt`.
+Each numbered folder has its own `message.txt`. Replace the sample words and drop a `photo.jpeg` into that same folder. The site loads both automatically. Put your recording into `dist/personalize/08-voice-note/voice-note.m4a`, with an optional `transcript.txt`.
 
-For headings, captions, handwritten notes, or different media filenames, edit the matching section in [dist/content.js](dist/content.js). Missing photos and audio keep their placeholders. Refresh the page after saving files; use the HTTP preview above rather than opening index.html directly.
+For headings, captions, handwritten notes, or different media filenames, edit the matching section in [dist/content.js](dist/content.js). Uploaded JPEG photos and the M4A recording are connected. Refresh the page after saving files; use the HTTP preview above rather than opening index.html directly.
 
-The seven photo slots are baby, toddler, teen, adulthood, now, CMA success, and married life. All current messages are sample copy. No personal media is included yet.
+The seven photo slots are baby, toddler, teen, adulthood, now, CMA success, and married life. The personal photos, recording, and edited messages are included.
 
 GitHub stores the source; pushing changes there does not automatically update the separate Sites preview. Publish a new version after personalizing.
 
@@ -49,4 +49,4 @@ The site uses Google Fonts with serif/sans-serif/cursive fallbacks. No analytics
 
 ## Final polish
 
-Real photos gently develop into full color once per image during a page visit. The candle dims before the birthday greeting, with confetti following after she has a moment to read it. The voice note has a quiet playback indicator, replay, and a final line from `dist/personalize/08-voice-note/ending.txt` revealed only when playback ends. Reduced-motion preferences skip the effects. Personal recording and photos still need to be supplied.
+Real photos gently develop into full color once per image during a page visit. The candle dims before the birthday greeting, with confetti following after she has a moment to read it. The voice note has a quiet playback indicator, replay, and a final line from `dist/personalize/08-voice-note/ending.txt` revealed only when playback ends. Reduced-motion preferences skip the effects. The personal recording and photos are connected.

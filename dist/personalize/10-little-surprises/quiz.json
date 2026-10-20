@@ -37,12 +37,12 @@
     "question": "One final, very serious question.",
     "answers": [
       {
-        "label": "Will you still choose me on my grumpy days?",
-        "reply": "The grumpy days. The tired days. The “don’t talk to me” days. Still you."
+        "label": "Will you still choose me on my worst days?",
+        "reply": "The worst days. The tired days. The “don’t talk to me” days. Still you."
       },
       {
         "label": "Can I keep being your favourite?",
-        "reply": "Position permanently filled. No further applications will be accepted."
+        "reply": "Position permanently filled"
       },
       {
         "label": "Are you going to get all mushy now?",
