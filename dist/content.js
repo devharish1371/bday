@@ -1,6 +1,5 @@
 // PERSONALIZATION SETTINGS
-// Photos, messages and secret notes: see the numbered folders in dist/personalize/.
-// Text files take priority over the fallback copy below.
+// Text files in personalize/ override fallback copy below.
 window.BIRTHDAY = {
   "voiceNote": "personalize/08-voice-note/voice-note.mp3",
   "voiceTranscript": "",
@@ -115,5 +114,65 @@ window.BIRTHDAY = {
   ],
   "voiceTranscriptFile": "personalize/08-voice-note/transcript.txt",
   "letter": "I can’t tell you exactly what our future looks like.\n\nBut when I imagine your big days, I want to be there cheering. And when I imagine the quiet days, I want to be there too.\n\nSo here are two little dreams I’m keeping close to my heart. One for you. One for us.\n\nAlways on your team,\nyour favourite human ♡",
-  "letterFile": "personalize/09-future-letter/letter.txt"
+  "letterFile": "personalize/09-future-letter/letter.txt",
+  "quiz": [
+    {
+      "question": "How normal is your boyfriend about you?",
+      "answers": [
+        {
+          "label": "Extremely normal. Obviously.",
+          "reply": "Yes. Very normal. Just made an entire website about you. Casual."
+        },
+        {
+          "label": "A little bit obsessed.",
+          "reply": "“A little” is doing a lot of work in that sentence, pretty lady."
+        },
+        {
+          "label": "President of my fan club.",
+          "reply": "Founder, president, and the guy in the front row cheering too loudly."
+        }
+      ]
+    },
+    {
+      "question": "Pick our perfect kind of day.",
+      "answers": [
+        {
+          "label": "A tiny adventure, just us.",
+          "reply": "Getting a little lost with you sounds like a very good plan."
+        },
+        {
+          "label": "Snacks. A blanket. Zero plans.",
+          "reply": "Excellent itinerary. I will be stealing your snacks, though."
+        },
+        {
+          "label": "Literally anything together.",
+          "reply": "That’s the thing, isn’t it? You make ordinary days feel like something."
+        }
+      ]
+    },
+    {
+      "question": "One final, very serious question.",
+      "answers": [
+        {
+          "label": "Will you still choose me on my grumpy days?",
+          "reply": "The grumpy days. The tired days. The “don’t talk to me” days. Still you."
+        },
+        {
+          "label": "Can I keep being your favourite?",
+          "reply": "Position permanently filled. No further applications will be accepted."
+        },
+        {
+          "label": "Are you going to get all mushy now?",
+          "reply": "Too late. I’ve been mushy since the first page."
+        }
+      ]
+    }
+  ],
+  "quizFile": "personalize/10-little-surprises/quiz.json",
+  "coupon": {
+    "title": "Private screening of ur fav movie with me",
+    "message": "You choose the movie. I’ll bring the snacks, the cuddles, and my very best company.",
+    "footer": "Two seats. One favourite person. ♡"
+  },
+  "couponFile": "personalize/10-little-surprises/coupon.json"
 };

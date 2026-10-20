@@ -29,6 +29,15 @@ The present-first choice removes the gift button and reveals the cheeky detour. 
 - An animated wish candle before the birthday explosion; tap it or use the wish button. No microphone needed.
 - Notes are collected for the current page visit; refreshing resets the collection.
 
+## Birthday adventure
+
+- Optional three-question boyfriend quiz: different affectionate replies, no wrong answers, and a skip option.
+- Scratch-to-reveal date invitation with a keyboard-accessible reveal button.
+- Downloadable PNG keepsakes for your letter and date invitation.
+- Optional synthesized chimes, off by default.
+
+Personalize the quiz and invitation in `dist/personalize/10-little-surprises/`. Invalid JSON falls back to the working sample content. The keepsake includes the full future letter, with height adjusted to fit its text. These features run entirely in the visitor’s browser.
+
 ## Design research
 
 - Storybook pacing: https://www.awwwards.com/sites/my-little-storybook

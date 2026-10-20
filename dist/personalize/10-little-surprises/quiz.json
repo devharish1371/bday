@@ -1,0 +1,53 @@
+[
+  {
+    "question": "How normal is your boyfriend about you?",
+    "answers": [
+      {
+        "label": "Extremely normal. Obviously.",
+        "reply": "Yes. Very normal. Just made an entire website about you. Casual."
+      },
+      {
+        "label": "A little bit obsessed.",
+        "reply": "“A little” is doing a lot of work in that sentence, pretty lady."
+      },
+      {
+        "label": "President of my fan club.",
+        "reply": "Founder, president, and the guy in the front row cheering too loudly."
+      }
+    ]
+  },
+  {
+    "question": "Pick our perfect kind of day.",
+    "answers": [
+      {
+        "label": "A tiny adventure, just us.",
+        "reply": "Getting a little lost with you sounds like a very good plan."
+      },
+      {
+        "label": "Snacks. A blanket. Zero plans.",
+        "reply": "Excellent itinerary. I will be stealing your snacks, though."
+      },
+      {
+        "label": "Literally anything together.",
+        "reply": "That’s the thing, isn’t it? You make ordinary days feel like something."
+      }
+    ]
+  },
+  {
+    "question": "One final, very serious question.",
+    "answers": [
+      {
+        "label": "Will you still choose me on my grumpy days?",
+        "reply": "The grumpy days. The tired days. The “don’t talk to me” days. Still you."
+      },
+      {
+        "label": "Can I keep being your favourite?",
+        "reply": "Position permanently filled. No further applications will be accepted."
+      },
+      {
+        "label": "Are you going to get all mushy now?",
+        "reply": "Too late. I’ve been mushy since the first page."
+      }
+    ]
+  }
+]
