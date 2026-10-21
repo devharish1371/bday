@@ -11,7 +11,7 @@ const selectedMovie = () => movieChoice === 'custom' ? customMovie.trim() : movi
 const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function chime(final = false) {
-  if (!soundEnabled) return;
+  if (!soundEnabled || voiceIsPlaying) return;
   try {
     const Audio = window.AudioContext || window.webkitAudioContext;
     if (!Audio) return;
@@ -61,7 +61,7 @@ function quizResult() {
 function scratchScene() {
   screen='scratch';scratchRevealed=false;window.scrollTo(0,0);
   const coupon=data.coupon;
-  app.innerHTML=`<section class="scratch-scene"><span class="eyebrow">A LITTLE EXTRA, BECAUSE IT’S YOU</span><h1 tabindex="-1">Lucky you.<br><em>Luckier me.</em></h1><p class="scene-subtitle">One more thing tucked inside your birthday card.</p><div class="scratch-ticket"><div class="ticket-notch left" aria-hidden="true"></div><div class="ticket-notch right" aria-hidden="true"></div><div class="ticket-top"><span>THE JUST-US LOTTERY</span><span>№ 001 · EVERY TICKET WINS</span></div><div class="scratch-area"><div class="coupon-copy" aria-hidden="true"><span class="eyebrow">YOU’VE WON</span><h2>${esc(coupon.title)}</h2><p>${esc(coupon.message)}</p></div><canvas id="scratch-canvas" width="1200" height="800" aria-hidden="true"></canvas></div><div class="ticket-bottom">${esc(coupon.footer)}</div></div><p class="scratch-status handwriting" role="status">rub the silver away with your finger ♡</p><button class="text-button scratch-fallback" data-action="reveal-ticket">Reveal without scratching</button><div class="ticket-actions" hidden><fieldset class="movie-picker"><legend>Pick our movie ♡</legend><label class="movie-option"><input type="radio" name="movie" value="OK Kanmani" ${movieChoice==='OK Kanmani'?'checked':''}><span><small>01</small> OK Kanmani</span></label><label class="movie-option"><input type="radio" name="movie" value="Alaipaayuthey" ${movieChoice==='Alaipaayuthey'?'checked':''}><span><small>02</small> Alaipaayuthey</span></label><label class="movie-option"><input type="radio" name="movie" value="custom" ${movieChoice==='custom'?'checked':''}><span><small>03</small> Your choice, baby</span></label><label class="movie-input-label" for="custom-movie">Your movie</label><input id="custom-movie" type="text" maxlength="120" placeholder="anything u want baby" value="${esc(customMovie)}" ${movieChoice==='custom'?'':'disabled'}><p class="movie-confirmation" role="status">${selectedMovie()?`Our movie: ${esc(selectedMovie())} ♡`:'Which one are we watching?'}</p></fieldset><button class="button" data-action="save-coupon">Keep my little invitation <span>↓</span></button></div><button class="text-button" data-action="scratch-back">← back to my birthday</button></section>`;
+  app.innerHTML=`<section class="scratch-scene"><span class="eyebrow">A LITTLE EXTRA, BECAUSE IT’S YOU</span><h1 tabindex="-1">Lucky you.<br><em>Luckier me.</em></h1><p class="scene-subtitle">One more thing tucked inside your birthday card.</p><div class="scratch-ticket"><div class="ticket-notch left" aria-hidden="true"></div><div class="ticket-notch right" aria-hidden="true"></div><div class="ticket-top"><span>THE JUST-US LOTTERY</span><span>№ 001 · EVERY TICKET WINS</span></div><div class="scratch-area"><div class="coupon-copy" aria-hidden="true"><span class="eyebrow">YOU’VE WON</span><h2>${esc(coupon.title)}</h2><p>${esc(coupon.message)}</p></div><canvas id="scratch-canvas" width="1200" height="800" aria-hidden="true"></canvas></div><div class="ticket-bottom">${esc(coupon.footer)}</div></div><p class="scratch-status handwriting" role="status">rub the silver away with your finger ♡</p><button class="text-button scratch-fallback" data-action="reveal-ticket">Reveal without scratching</button><div class="ticket-actions" hidden><fieldset class="movie-picker"><legend>Pick our movie ♡</legend><label class="movie-option"><input type="radio" name="movie" value="OK Kanmani" ${movieChoice==='OK Kanmani'?'checked':''}><span><small>01</small> OK Kanmani</span></label><label class="movie-option"><input type="radio" name="movie" value="Alaipaayuthey" ${movieChoice==='Alaipaayuthey'?'checked':''}><span><small>02</small> Alaipaayuthey</span></label><label class="movie-option"><input type="radio" name="movie" value="custom" ${movieChoice==='custom'?'checked':''}><span><small>03</small> Your choice, baby</span></label><label class="movie-input-label" for="custom-movie">Your movie</label><input id="custom-movie" type="text" maxlength="120" placeholder="anything u want baby" value="${esc(customMovie)}" ${movieChoice==='custom'?'':'disabled'}><p class="movie-confirmation" role="status">${selectedMovie()?`Our movie: ${esc(selectedMovie())} ♡`:'Which one are we watching?'}</p></fieldset><button class="button" data-action="save-coupon">Save our movie ticket <span>↓</span></button></div><button class="text-button" data-action="scratch-back">← back to my birthday</button></section>`;
   setupScratch();focusHeading();
 }
 function setupScratch() {
@@ -89,6 +89,7 @@ function revealTicket() {
   app.querySelector('.scratch-status').textContent='Redeem with one very enthusiastic boyfriend. ♡';
   app.querySelector('.scratch-fallback').hidden=true;
   app.querySelector('.ticket-actions').hidden=false;
+  updateMovieTicket();
   chime(true);confetti();
 }
 function wrapCardText(context,text,width) {
@@ -121,7 +122,7 @@ async function saveKeepsake(coupon=false) {
     const canvas=document.createElement('canvas'),context=canvas.getContext('2d');
     if(!context)throw new Error('Canvas unavailable');
     context.font='30px Georgia';
-    const text=coupon?`${data.coupon.title}\n\n${data.coupon.message}\n\nOur movie: ${selectedMovie()}\n\n${data.coupon.footer}`:data.letter;
+    const text=coupon?`${data.coupon.title}\n\n${data.coupon.message}\n\nNow showing: ${selectedMovie()}\n\nSeats: just us two\nDate: whenever you say\n\n${data.coupon.footer}`:data.letter;
     const lines=wrapCardText(context,text,810);
     canvas.width=1000;canvas.height=Math.max(1250,480+lines.length*47);
     context.fillStyle='#f9f5ed';context.fillRect(0,0,canvas.width,canvas.height);
@@ -163,10 +164,22 @@ app.addEventListener('change',event=>{
   const custom=app.querySelector('#custom-movie');
   custom.disabled=movieChoice!=='custom';
   app.querySelector('.movie-confirmation').textContent=selectedMovie()?`Our movie: ${selectedMovie()} ♡`:'Type any movie you want, baby ♡';
+  updateMovieTicket();
   if(movieChoice==='custom')custom.focus();
 });
 app.addEventListener('input',event=>{
   if(event.target.id!=='custom-movie')return;
   customMovie=event.target.value;
+  updateMovieTicket();
   app.querySelector('.movie-confirmation').textContent=selectedMovie()?`Our movie: ${selectedMovie()} ♡`:'Type any movie you want, baby ♡';
 });
+
+function updateMovieTicket() {
+  const copy = app.querySelector('.coupon-copy');
+  if (!copy || !scratchRevealed) return;
+  const movie = selectedMovie();
+  app.querySelector('.scratch-ticket').classList.toggle('movie-booked', !!movie);
+  copy.innerHTML = movie
+    ? `<span class="eyebrow">OUR PRIVATE SCREENING · ADMIT TWO</span><h2>${esc(movie)}</h2><p class="cinema-seats">just us two</p><p class="cinema-date">date: whenever you say ♡</p>`
+    : `<span class="eyebrow">YOU’VE WON</span><h2>${esc(data.coupon.title)}</h2><p>${esc(data.coupon.message)}</p>`;
+}

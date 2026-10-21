@@ -23,3 +23,21 @@ header{gap:18px}.header-note{flex:1;text-align:center}.sound-toggle{border:0;bac
 @media(prefers-reduced-motion:reduce){.photo-developing{animation:none;filter:none;opacity:1}.wish-scene.wished:after{animation:none;opacity:0}.voice-wave span,.is-playing .voice-wave span{animation:none;transform:scaleY(.6)}}
 
 footer{justify-content:center}.media-error{font-size:13px;line-height:1.6;padding:25px;text-align:center;color:var(--muted)}
+
+/* Small invitations to linger; no extra steps in the story. */
+.photo-open{display:block;width:100%;padding:0;border:0;border-radius:0;cursor:zoom-in;color:inherit;position:relative}
+.photo-open:after{content:'↗';position:absolute;right:8px;bottom:8px;background:#f9f5edde;border-radius:50%;width:28px;height:28px;display:grid;place-items:center;color:var(--ink);font:16px Georgia}
+.photo-open:focus-visible{outline:3px solid var(--red);outline-offset:5px}
+#photo-dialog{width:min(900px,calc(100% - 24px));max-width:900px;max-height:94svh;padding:48px 16px 12px;overflow:auto}
+#photo-dialog figure{margin:0}#photo-dialog img{display:block;width:100%;height:auto;max-height:73svh;object-fit:contain}
+#photo-dialog figcaption{font:22px/1.5 'Kalam',cursive;padding:14px 8px 4px;overflow-wrap:anywhere}
+.close{min-width:44px;min-height:44px;top:3px;right:6px}
+body:has(dialog[open]){overflow:hidden}
+.movie-booked .coupon-copy{background:#eef0df}.movie-booked .coupon-copy h2{overflow-wrap:anywhere;font-size:clamp(26px,5vw,38px)}
+.coupon-copy .cinema-seats{font:24px/1.4 'Kalam',cursive;color:var(--red);margin:10px 0}.coupon-copy .cinema-date{font-size:12px}
+body.voice-listening #app,body.voice-listening header,body.voice-listening footer{opacity:.3;transition:opacity .65s}
+body.voice-listening #gift-dialog::backdrop{background:#252a22b8}
+body.voice-listening #app *,body.voice-listening #confetti *{animation-play-state:paused!important}
+.voice-ending:not([hidden]){animation:voice-last-line 1.8s ease-out both}
+@keyframes voice-last-line{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.voice-ending:not([hidden]){animation:none}body.voice-listening #app,body.voice-listening header,body.voice-listening footer{transition:none}}
