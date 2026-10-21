@@ -1,5 +1,11 @@
 // Quiet finishing touches: first-view photos and a voice-led closing moment.
 const developedPhotos = new Set();
+let voiceIsPlaying = false;
+function quietVoiceStage(playing) {
+  voiceIsPlaying = playing;
+  document.body.classList.toggle('voice-listening', playing);
+  if (playing) document.querySelector('#confetti').replaceChildren();
+}
 function developPhoto() {
   const photo = app.querySelector('.photo img');
   if (!photo || developedPhotos.has(photo.getAttribute('src'))) return;
@@ -20,8 +26,8 @@ function prepareVoiceMoment(audio, slot) {
   moment.querySelector('.voice-ending p').textContent = data.voiceEnding;
   slot.prepend(moment);
   const status = moment.querySelector('.listening-status');
-  const quiet = text => { moment.classList.remove('is-playing'); status.textContent = text; };
-  audio.addEventListener('playing', () => { moment.classList.add('is-playing'); status.textContent = 'just listen, baby. ♡'; });
+  const quiet = text => { moment.classList.remove('is-playing'); quietVoiceStage(false); status.textContent = text; };
+  audio.addEventListener('playing', () => { quietVoiceStage(true); moment.querySelector('.voice-ending').hidden = true; moment.querySelector('.voice-replay').hidden = true; moment.classList.add('is-playing'); status.textContent = 'just listen, baby. ♡'; });
   audio.addEventListener('pause', () => quiet(audio.ended ? 'All my love. Always.' : 'Take your time. I’m right here.'));
   audio.addEventListener('waiting', () => quiet('One little moment…'));
   audio.addEventListener('error', () => quiet('The recording couldn’t load. Please try again.'));
@@ -44,6 +50,27 @@ function birthdayEntrance(burst) {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   // Let her read the greeting before the celebration fills the page.
   setTimeout(() => {
-    if (screen === 'finale' && finale.isConnected) { confetti(); chime(true); }
+    if (screen === 'finale' && finale.isConnected && !document.querySelector('dialog[open]')) { confetti(); chime(true); }
   }, 1150);
 }
+
+// Native dialogs keep keyboard focus inside the photograph and restore it on close.
+const photoDialog = document.querySelector('#photo-dialog');
+document.addEventListener('click', event => {
+  const trigger = event.target.closest('.photo-open');
+  if (!trigger) return;
+  const image = trigger.querySelector('img');
+  if (!image?.naturalWidth) return;
+  const enlarged = photoDialog.querySelector('img');
+  enlarged.src = image.src;
+  enlarged.alt = image.alt;
+  photoDialog.querySelector('figcaption').textContent = trigger.closest('.polaroid').querySelector('.photo-caption').textContent;
+  photoDialog.showModal();
+});
+photoDialog.querySelector('.close').addEventListener('click', () => photoDialog.close());
+photoDialog.addEventListener('click', event => {
+  if (event.target !== photoDialog) return;
+  const bounds = photoDialog.getBoundingClientRect();
+  if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) photoDialog.close();
+});
+document.querySelector('#gift-dialog').addEventListener('close', () => quietVoiceStage(false));
